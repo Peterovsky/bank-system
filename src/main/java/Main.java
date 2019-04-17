@@ -57,7 +57,7 @@ public class Main {
                     break;
                 case 5: // Create user
                     String imie, nazwisko, pesel;
-                    int phoneNumber;
+                    String phoneNumber;
                     System.out.println("CREATING USER:");
                     System.out.print("First name: ");
                     imie = sc.next();
@@ -66,7 +66,7 @@ public class Main {
                     System.out.print("PESEL: ");
                     pesel = sc.next();
                     System.out.print("Phone number: ");
-                    phoneNumber = sc.nextInt();
+                    phoneNumber = sc.next();
                     bank.addUser(new User(imie, nazwisko, pesel, phoneNumber));
                     break;
                 case 6: { // Create account

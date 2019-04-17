@@ -7,10 +7,10 @@ public class User {
     private final String firstName;
     private final String lastName;
     private String pesel;
-    private int phoneNumber;
+    private String phoneNumber;
     private ArrayList<Account> userAccounts = new ArrayList<>();
 
-    public User(String firstName, String lastName, String pesel, int phoneNumber) {
+    public User(String firstName, String lastName, String pesel, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
@@ -33,11 +33,11 @@ public class User {
         this.pesel = pesel;
     }
 
-    int getPhoneNumber() {
+    String getPhoneNumber() {
         return phoneNumber;
     }
 
-    void setPhoneNumber(int phoneNumber) {
+    void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

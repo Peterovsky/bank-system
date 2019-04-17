@@ -34,6 +34,22 @@ public class CompanyAccount extends Account {
         System.out.println("Account with number " + getAccountNumber() + " has been charged with maintenance fee: " + maintenanceFee);
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public ArrayList<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(ArrayList<Employee> employees) {
+        this.employees = employees;
+    }
+
     @Override
     public String toString() {
         return super.toString() + ", Company: " + companyName + "]";
