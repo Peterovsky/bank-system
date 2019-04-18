@@ -3,6 +3,8 @@ package bank;
 public class SavingsAccount extends Account {
 
     private double savingRate;
+    private double MAINTENANCE_FEE = 1.0;
+
 
     public SavingsAccount(String accountNumber, double amountOfFunds, User owner, double savingRate) {
         super(accountNumber, amountOfFunds, owner);
@@ -18,9 +20,24 @@ public class SavingsAccount extends Account {
 
     @Override
     public void payAccountMaintenanceFee() {
-        double maintenanceFee = 1.0;
-        removeFunds(maintenanceFee);
-        System.out.println("Account with number " + getAccountNumber() + " has been charged with maintenance fee: " + maintenanceFee);
+        removeFunds(MAINTENANCE_FEE);
+        System.out.println("Account with number " + getAccountNumber() + " has been charged with maintenance fee: " + MAINTENANCE_FEE);
+    }
+
+    public double getMaintenanceFee() {
+        return MAINTENANCE_FEE;
+    }
+
+    public double getSavingRate() {
+        return savingRate;
+    }
+
+    public void setSavingRate(double savingRate) {
+        if (savingRate >= 0) {
+            this.savingRate = savingRate;
+        } else {
+            throw new IllegalArgumentException("Saving rate can not be negative!");
+        }
     }
 
     @Override

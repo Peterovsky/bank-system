@@ -10,6 +10,7 @@ public abstract class Account {
     private ArrayList<Transfer> incomeRegistry = new ArrayList<Transfer>();     // register of all income transfers
     private ArrayList<Transfer> outcomeRegistry = new ArrayList<Transfer>();    // register of all outcome transfers
 
+
     Account(String accountNumber, double amountOfFunds, User owner) {
         this.accountNumber = accountNumber;
         this.balance = amountOfFunds;
@@ -21,14 +22,18 @@ public abstract class Account {
 
     // Method that create outcome transfer
     public void sendTransfer(double amountOfFunds, String receiverAccountNumber) {
-        if (amountOfFunds <= balance) {
-            Transfer transfer = new Transfer(amountOfFunds, accountNumber, receiverAccountNumber);
-            transfer.setTransferStatus(TransferStatus.IN_PROGRESS);
-            Bank.getBankInstance().realizeTransfer(transfer);
-            outcomeRegistry.add(transfer);
-            balance -= transfer.getAmountOfFunds();
+        if (amountOfFunds > 0) {
+            if (amountOfFunds <= balance) {
+                Transfer transfer = new Transfer(amountOfFunds, accountNumber, receiverAccountNumber);
+                transfer.setTransferStatus(TransferStatus.IN_PROGRESS);
+                Bank.getBankInstance().realizeTransfer(transfer);
+                outcomeRegistry.add(transfer);
+                balance -= transfer.getAmountOfFunds();
+            } else {
+                System.out.println("There is not enough founds to make this transfer.");
+            }
         } else {
-            System.out.println("There is not enough founds to make this transfer.");
+            throw new IllegalArgumentException("Amount of founds has to be positive!");
         }
     }
 

@@ -191,7 +191,7 @@ public class Main {
                                     break;
                                 case 5:
                                     System.out.print("Enter amount of top-up:");
-                                    selectedAccount.topUpYourPhone(sc.nextDouble());
+                                    selectedAccount.topUpOwnerPhone(sc.nextDouble());
                                     break;
                                 case 0:
                                     exit2 = true;
@@ -240,7 +240,7 @@ public class Main {
                 }
                 break;
                 case 8: // Charge all accounts with maintenance fee
-                    for (Account account : bank.getAccountsMap().values()) {
+                    for (Account account : bank.getAccounts().values()) {
                         account.payAccountMaintenanceFee();
                     }
                     break;

@@ -6,7 +6,7 @@ public class CompanyAccount extends Account {
 
     private String companyName;
     private ArrayList<Employee> employees = new ArrayList<Employee>();  // List of account numbers and salaries of all employees employed by account owner
-
+    private final double MAINTENANCE_FEE = 20.0;
 
     public CompanyAccount(String accountNumber, double amountOfFunds, User owner, String companyName) {
         super(accountNumber, amountOfFunds, owner);
@@ -29,9 +29,8 @@ public class CompanyAccount extends Account {
 
     @Override
     public void payAccountMaintenanceFee() {
-        double maintenanceFee = 20.0;
-        removeFunds(maintenanceFee);
-        System.out.println("Account with number " + getAccountNumber() + " has been charged with maintenance fee: " + maintenanceFee);
+        removeFunds(MAINTENANCE_FEE);
+        System.out.println("Account with number " + getAccountNumber() + " has been charged with maintenance fee: " + MAINTENANCE_FEE);
     }
 
     public String getCompanyName() {
@@ -48,6 +47,10 @@ public class CompanyAccount extends Account {
 
     public void setEmployees(ArrayList<Employee> employees) {
         this.employees = employees;
+    }
+
+    public double getMaintenanceFee() {
+        return MAINTENANCE_FEE;
     }
 
     @Override

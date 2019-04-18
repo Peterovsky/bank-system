@@ -26,9 +26,9 @@ public class Bank {
     public void addUser(User user) {
         if (!users.containsKey(user.getPesel())) {
             users.put(user.getPesel(), user);
-            System.out.println("Success! Created account: " + user.toString());
+            System.out.println("Success! Created user: " + user.toString());
         } else {
-            System.out.println("Account with this number already exists!");
+            System.out.println("User with this PESEL already exists!");
         }
     }
 
@@ -47,13 +47,13 @@ public class Bank {
     // If receiver isn't in our bank, transfer is classified as a external.
 
     void realizeTransfer(Transfer transfer) {
-        transfer.setTransferStatus(TransferStatus.DONE);
         try {
             accounts.get(transfer.getReceiverAccountNumber()).receiveTransfer(transfer);
             System.out.println("Internal transfer was made " + transfer.toString());
         } catch (NullPointerException e) {
             System.out.println("External transfer was made " + transfer.toString());
         }
+        transfer.setTransferStatus(TransferStatus.DONE);
     }
 
     public User getUserByPesel(String pesel) {
@@ -64,8 +64,12 @@ public class Bank {
         return accounts.get(accountNumber);
     }
 
-    public Map<String, Account> getAccountsMap() {
+    public Map<String, Account> getAccounts() {
         return accounts;
+    }
+
+    public Map<String, User> getUsers() {
+        return users;
     }
 
     // Method that shows list of all users with details about them
